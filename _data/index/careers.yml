@@ -1,29 +1,29 @@
 # careers section data
 # if you don't have language feature(language.yml is empty), ignore "i18n" items
 - name:
-    detail: Company A
-    i18n: company_a
+    detail: Northrop Grumman
+    i18n: Northrop Grumman
   desc:
-    detail: I worked at Company A ...
-    i18n: company_a_desc
+    detail: Software Engineering intern in the Mission Systems sector of Northrop Grumman
+    i18n: Software Engineering intern in the Mission Systems sector of Northrop Grumman
   date:
-    detail: Apr. 2016
-    i18n: company_a_date
+    detail: May 2018
+    i18n: May 2018
   job:
-    detail: CTO
-    i18n: company_a_job
-  icon: fa-plus-square
+    detail: Software Engineer
+    i18n: Software Engineer
+  icon: fa-fighter-jet
 
 - name:
-    detail: Company B
-    i18n: company_b
+    detail: Autonomous Robots and Controls Laboratory (ARCLab)
+    i18n: Autonomous Robots and Controls Laboratory (ARCLab)
   desc:
-    detail: I worked at Company B ...
-    i18n: company_b_desc
+    detail: Research Assistant at the Autonomous Robots and Controls Laboratory at the University of Central Florida.
+    i18n: Research Assistant at the Autonomous Robots and Controls Laboratory at the University of Central Florida.
   date:
-    detail: Jun. 2015
-    i18n: company_b_date
+    detail: Jan. 2017
+    i18n: Jan. 2017
   job:
-    detail: Full Stack Developer
-    i18n: company_b_job
-  icon: fa-plus-square
+    detail: Research Assistant - Developer
+    i18n: Research Assistant - Developer
+  icon: fa-code

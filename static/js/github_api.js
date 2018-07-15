@@ -9,7 +9,7 @@ $(document).ready(function() {
         users.push($(this).attr('user'))
       }
   })
-  // console.log(1, users, repos)
+
   for (var i = 0; i < users.length; i++) {
     $.ajax({
     type: "GET",
