@@ -12,11 +12,21 @@
              </div>
          </div>
          <!-- Set background for slide in css -->
+         {% if page.title == 'index' %}
          <div
          class="header-back"
          style="background: url({{ '/static/assets/img/' | prepend: site.baseurl }}{{ site.data.index.banners[1].src }}), linear-gradient(#{{ site.data.index.banners[1].background_color1 }}, #{{ site.data.index.banners[1].background_color2 }});background-repeat: no-repeat;background-position: center;"
          title="{{ site.data.index.banners[1].title }}">
+
          </div>
+         {% else %}
+         <div
+         class="header-back"
+         style="background: url({{ '/static/assets/img/' | prepend: site.baseurl }}{{ site.data.index.banners[2].src }}), linear-gradient(#{{ site.data.index.banners[2].background_color1 }}, #{{ site.data.index.banners[2].background_color2 }});background-repeat: no-repeat;background-position: center;"
+         title="{{ site.data.index.banners[1].title }}">
+
+         </div>
+         {% endif %}
      </div>
    </div>
 </div>
