@@ -27,9 +27,6 @@ permalink: /blog/
                         {{ post.title }}
                     </a>
                     <div class="vote-info">
-                    {% if site.disqus %}
-                        <i class="fa fa-comments-o"> </i> <a>Comments (<span class="disqus-comment-count" data-disqus-url="{{ site.url }}{{ post.url }}">0</span>)</a>
-                    {% endif %}
                         <i class="fa fa-clock-o"></i> <a>{{ post.date | date: "%-d %b %Y" }}</a>
                         <i class="fa fa-user"></i> <a>{{ site.author.name }}</a>
                         <i class="fa fa-pencil"></i><a> Medium Post</a>
@@ -64,6 +61,14 @@ permalink: /blog/
                         {% endif %}
                             <i class="fa fa-clock-o"></i> <a>{{ post.date | date: "%-d %b %Y" }}</a>
                             <i class="fa fa-user"></i> <a>{{ site.author.name }}</a>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5 style="display: inline;">Tags:</h5>
+                                    {% for tag in post.tags %}
+                                    <button class="btn btn-white btn-xs">{{ tag }}</button>
+                                    {% endfor %}
+                                </div>
+                              </div>
                         </div>
                     </div>
                     <div class="col-md-2 ">

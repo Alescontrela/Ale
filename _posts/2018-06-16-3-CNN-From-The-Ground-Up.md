@@ -10,3 +10,7 @@ categories: [Machine-learning,Python]
 tags: [Machine Learning,Computer Vision]
 icon: fa-medium
 ---
+
+<p align="center">
+  Read this post on <b><a href = "https://towardsdatascience.com/convolutional-neural-networks-from-the-ground-up-c67bb41454e1" target = "blank" >Medium <i class="fa fa-medium"></i></a></b> .
+</p>
