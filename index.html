@@ -47,7 +47,10 @@ permalink: /
 </div>
 {% if site.index_carousel %}
 {% include carousel.html %}
+{% else %}
+{% include no_carousel.html %}
 {% endif %}
+
 
 {% for section in site.data.landing %}
 {% assign loopindex = forloop.index | modulo: 2 %}

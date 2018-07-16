@@ -1,0 +1,22 @@
+<div class="carousel carousel-fade" id="header-row">
+        <!-- container-fluid is the same as container but spans a wider viewport,
+    it still has padding though so you need to remove this either by adding
+    another class with no padding or inline as I did below -->
+   <div class="carousel-inner" role="listbox">
+     <div class="item active">
+         <div class="container">
+             <div class="carousel-caption">
+             </div>
+             <div class="carousel-image wow zoomIn">
+                 <!-- <img src="static/img/landing/laptop.png" alt="laptop"/> -->
+             </div>
+         </div>
+         <!-- Set background for slide in css -->
+         <div
+         class="header-back"
+         style="background: url({{ '/static/assets/img/' | prepend: site.baseurl }}{{ site.data.index.banners[1].src }}), linear-gradient(#{{ site.data.index.banners[1].background_color1 }}, #{{ site.data.index.banners[1].background_color2 }});background-repeat: no-repeat;background-position: center;"
+         title="{{ site.data.index.banners[1].title }}">
+         </div>
+     </div>
+   </div>
+</div>

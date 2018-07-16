@@ -52,8 +52,8 @@ gio:  # if you wanna this feature, go to https://www.growingio.com/ to get your 
 donation: off  # type 'on'/'off' to choice display donation button at post page or not
 
 ## carousels
-index_carousel: on  # index page carousel switch
-blog_carousel: on  # blog page carousel switch
+index_carousel:  # index page carousel switch
+blog_carousel:   # blog page carousel switch
 
 # scss
 sass:
