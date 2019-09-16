@@ -3,7 +3,7 @@
 # Suggest projects' img be located at '/static/assets/img/landing', and edit following img items.
 - name: coinmarketcap-history
   i18n: coinmarketcap-history
-  gh_user: Alescontrela
+  gh_user: Waultics
   repo: coinmarketcap-history
   img: /static/assets/img/landing/coins.png
   desc: Asynchronously gather historical cryptocurrency data from Coinmarketcap.com.
@@ -14,9 +14,3 @@
   repo: Numpy-CNN
   img: /static/assets/img/landing/nn_icon.jpg
   desc: A numpy-only implementation of a Convolutional Neural Network, from the ground up.
-
-# - name: Google
-#   i18n: google
-#   url: https://google.com
-#   img: /static/assets/img/landing/google.png
-#   desc: This is another project.
