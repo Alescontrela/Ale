@@ -1,0 +1,117 @@
+I"ìG<p>The n-queens problem involves finding all possible ways to place n non-attacking queens on an <code class="highlighter-rouge">nxn</code> board. Non-attacking implies that <strong>no two queens can be on the same row, column, or diagonal, and therefore have no way of attacking one another</strong>. One possible solution to the n-queens problem, where n=4, can be displayed as follow:</p>
+
+<p><img src="/Ale/static/assets/img/blog/n_queens/n_queens.png" style="display: block; margin-left: auto; margin-right: auto; width: 15%;" /></p>
+
+<p>Most readily-available solutions involve using a direct representation of the chess board, such as an <code class="highlighter-rouge">nxn</code> array, to dictate the placement of queens on the board. Although this approach works, it is not efficient. Instead, a more practical approach is to represent the <em>state</em> of the rows, columns, and diagonals using dictionaries. Using this method, we directly observe whether a specific row, column, or diagonal is under attack.</p>
+
+<p><a href="https://github.com/Alescontrela/nqueens">GitHub repository for this post</a></p>
+
+<p>To do so, I make use of a single Python dictionary to store all needed information on the board, initialized as follows:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">board</span><span class="p">):</span> <span class="c1"># initialize the board
+</span>    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s">'queen'</span><span class="p">,</span><span class="s">'row'</span><span class="p">,</span><span class="s">'col'</span><span class="p">,</span><span class="s">'nwtose'</span><span class="p">,</span><span class="s">'swtone'</span><span class="p">]:</span>
+        <span class="n">board</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>  
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="c1"># set the queen positions, row vals, and col vals to empty
+</span>        <span class="n">board</span><span class="p">[</span><span class="s">'queen'</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">board</span><span class="p">[</span><span class="s">'row'</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">board</span><span class="p">[</span><span class="s">'col'</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">n</span><span class="p">):</span> <span class="c1"># set main diagonal to empty
+</span>        <span class="n">board</span><span class="p">[</span><span class="s">'nwtose'</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span> <span class="c1"># set opposite diagonal to empty
+</span>        <span class="n">board</span><span class="p">[</span><span class="s">'swtone'</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<p>Then, I create functions to check whether a particular spot on the board is free, as well as functions to add a queen and remove a queen from the board:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">is_free</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">board</span><span class="p">):</span> <span class="c1"># function to check whether a spot is available
+</span>    <span class="k">return</span><span class="p">(</span><span class="n">board</span><span class="p">[</span><span class="s">'row'</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="s">'col'</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="s">'nwtose'</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="s">'swtone'</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">addqueen</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">board</span><span class="p">):</span> <span class="c1"># add a queen by filling the spot
+</span>    <span class="n">board</span><span class="p">[</span><span class="s">'queen'</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">j</span>
+    <span class="n">board</span><span class="p">[</span><span class="s">'row'</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">board</span><span class="p">[</span><span class="s">'col'</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">board</span><span class="p">[</span><span class="s">'nwtose'</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">board</span><span class="p">[</span><span class="s">'swtone'</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">undoqueen</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">board</span><span class="p">):</span> <span class="c1"># undo the filling of a spot
+</span>    <span class="n">board</span><span class="p">[</span><span class="s">'queen'</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">board</span><span class="p">[</span><span class="s">'row'</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">board</span><span class="p">[</span><span class="s">'col'</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">board</span><span class="p">[</span><span class="s">'nwtose'</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">board</span><span class="p">[</span><span class="s">'swtone'</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<p>A function is created to store all devised solutions:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">add_solution</span><span class="p">(</span><span class="n">board</span><span class="p">):</span> <span class="c1"># save a solution
+</span>    <span class="k">global</span> <span class="n">solutions</span>
+    <span class="n">saved_board</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+    <span class="n">solutions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">saved_board</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Finally, the main function is created to find all possible solutions using backtracking:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">placequeen</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">board</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">board</span><span class="p">[</span><span class="s">'queen'</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="c1"># number of columns
+</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="c1"># loop over all columns in the row
+</span>        <span class="k">if</span> <span class="n">is_free</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">board</span><span class="p">):</span>
+            <span class="n">addqueen</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">board</span><span class="p">)</span> <span class="c1"># add queen is spot is free
+</span>            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>  <span class="c1"># if on last row, add the solution, remove the queen, and return
+</span>                <span class="n">add_solution</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+                <span class="n">undoqueen</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">board</span><span class="p">)</span>
+                <span class="k">return</span>
+            <span class="n">placequeen</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">board</span><span class="p">)</span> <span class="c1"># add a queen to the next row
+</span>
+            <span class="n">undoqueen</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">board</span><span class="p">)</span> <span class="c1"># undo queen placement to find all solutions
+</span></code></pre></div></div>
+
+<p>Some additional helper methods are also used to take input from the keyboard at the start of the program as well as print all possible solutions once the backtracking algorithm has run its course:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">printsolutions</span><span class="p">(</span><span class="n">solutions</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span> <span class="c1"># print the solutions
+</span>    <span class="k">print</span><span class="p">(</span><span class="s">"{} solutions total"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">solutions</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="n">sol</span> <span class="ow">in</span> <span class="n">solutions</span><span class="p">:</span>
+        <span class="n">arr</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="s">'queen'</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+            <span class="n">arr</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">sol</span><span class="p">[</span><span class="s">'queen'</span><span class="p">][</span><span class="n">row</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">'{}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">(</span><span class="n">arr</span><span class="p">)))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"---"</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">take_input</span><span class="p">():</span> <span class="c1"># take user input
+</span>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Enter the size of the board: "</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">size</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="s">"Arbitrary solution, enter a number that is at least 4"</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">size</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="s">"Enter a number that is at least 4"</span><span class="p">)</span>
+        <span class="k">except</span> <span class="nb">ValueError</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">"Please enter numerical value"</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">size</span>
+</code></pre></div></div>
+
+<p>The algorithm is then run on a board size of the userâ€™s choice using the following script:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">solutions</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">size</span> <span class="o">=</span> <span class="n">take_input</span><span class="p">()</span>
+<span class="n">board</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">initialize</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">board</span><span class="p">)</span>
+
+<span class="n">placequeen</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">board</span><span class="p">)</span>
+
+<span class="n">printsolutions</span><span class="p">(</span><span class="n">solutions</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>This implementation of backtracking runs quite rapidly for board sizes &lt;= 10 on my macbook. Be aware that as the size of the board increases, the total amount of possible solutions increases drastically, which results in a longer runtime. The following curve shows just how rapid this growth is:</p>
+
+<p><img src="/Ale/static/assets/img/blog/n_queens/board-size_vs_num-solutions.png" style="display: block; margin-left: auto; margin-right: auto; width: 50%;" /></p>
+
+<p>I hope this post helped guide your intuition behind the n-queens problem, feel free to post your thoughts in the Disqus comments section below.</p>
+:ET
