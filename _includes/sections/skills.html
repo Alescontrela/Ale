@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="row features-block">
-        <div class="col-lg-1"></div>
+        <div class="col-lg-1 col-sm-0"></div>
         <script
           src="https://cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.min.js">
         </script>
@@ -18,14 +18,17 @@
         />
 
         <!-- Prepare a container for your calendar. -->
+        <div class="col-lg-10 col-sm-12">
         <div class="calendar">
             <!-- Loading stuff -->
-            Loading the data just for {{site.data.index.skills.github_user}}
+            Loading data for {{site.data.index.skills.github_user}}
+        </div>
         </div>
 
         <script>
             new GitHubCalendar(".calendar", "alescontrela");
         </script>
+        <div class="col-lg-1 col-sm-0"></div>
     </div>
     <div class="row features-block"></div>
 </div>
