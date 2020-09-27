@@ -1,0 +1,39 @@
+# carousel banners section
+# Add items for each banner image in the carousel
+#
+# Images are expected to be located in `static/assets/img/`.
+
+- src: landing/header_one.jpg
+  background_color1: FFE5B4
+  background_color2: f6d992
+  title: GTDynamics
+  description: GTDynamics is a trajectory optimization library I and my collaborators at the Borglab created. It allows the user to control arbitrary robotic systems without needing to specify the robot's dynamics.
+  video_id: 1kPcGzWL5XE
+
+- src: landing/pistons_pumpin.gif
+  background_color1: F4B400
+  background_color2: 0F9D58
+  title: Percent Navigation System
+  description: Percept is a navigation system which helps navigate people with visual impairment through indoor spaces. This project netted our team 1st place in the Google accessibility hackathon!
+  video_id: IxyRwxViKEQ
+
+- src: landing/pistons_pumpin.gif
+  background_color1: 92d7ef
+  background_color2: a2eae0
+  title: JESSII
+  description: This video demonstrates the tech stack my team developed during my time as software team lead. Our robot won 3rd place out of over 30 international teams in the 2019 Intelligent Ground Vehicle Competition.
+  video_id: FWrI0phhpcc
+
+- src: landing/future_mango.gif
+  background_color1: f6a192
+  background_color2: f6d992
+  title: Simple Biped Locomotion Control
+  description: An implementation of the biped controller described in <a href="https://www.cs.ubc.ca/~van/papers/Simbicon.htm">SIMBICON</a>.
+  video_id: JZwRxioZBWY
+
+- src: landing/future_mango.gif
+  background_color1: FDEFE2
+  background_color2: 79C1F1
+  title: Differential Dynamic Programming
+  description: This video demonstrates the application of a Differential Dynamic Programming algorithm (Sequential Linear Quadratic) to a cart pole system. Code <a href="https://github.com/Alescontrela/DDP_Examples">here</a>.
+  video_id: m5dm_l5AWGI

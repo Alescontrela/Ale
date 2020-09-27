@@ -1,6 +1,7 @@
 .landing-page .carousel-caption {
   h1, p {
-    text-transform: uppercase;
+    // text-transform: uppercase;
+    color: black;
   }
 }
 
@@ -2512,12 +2513,12 @@ body {
   .carousel {
     height: 470px;
   }
-  .carousel-caption {
-    z-index: 10;
-  }
+  // .carousel-caption {
+  //   z-index: 10;
+  // }
   .carousel .item {
     height: 470px;
-    background-color: #777;
+    // background-color: #777;
   }
   .carousel-inner > .item > img {
     position: absolute;
@@ -2547,6 +2548,8 @@ body {
     }
     .carousel-control {
       z-index: 2;
+      top:35%;
+      bottom:35%;
     }
   }
   .carousel-control {
@@ -2561,34 +2564,34 @@ body {
     }
     overflow: visible;
   }
-  .carousel-caption {
-    position: absolute;
-    top: 100px;
-    left: 0;
-    bottom: auto;
-    right: auto;
-    text-align: left;
-    &.blank {
-      top: 140px;
-    }
-  }
+  // .carousel-caption {
+  //   // position: absolute;
+  //   // top: 100px;
+  //   // left: 0;
+  //   // bottom: auto;
+  //   // right: auto;
+  //   // text-align: left;
+  //   // &.blank {
+  //   //   top: 140px;
+  //   // }
+  // }
   .carousel-image {
     position: absolute;
     right: 10px;
     top: 150px;
   }
-  .carousel-caption {
-    h1 {
-      font-weight: 700;
-      font-size: 38px;
-      text-shadow: none;
-      letter-spacing: -1.5px;
-    }
-    p {
-      font-weight: 700;
-      text-shadow: none;
-    }
-  }
+  // .carousel-caption {
+  //   h1 {
+  //     font-weight: 700;
+  //     font-size: 38px;
+  //     text-shadow: none;
+  //     letter-spacing: -1.5px;
+  //   }
+  //   p {
+  //     font-weight: 700;
+  //     text-shadow: none;
+  //   }
+  // }
   .caption-link {
     color: #fff;
     margin-left: 10px;
@@ -2660,7 +2663,7 @@ body {
     background-repeat: no-repeat;
   }
   .contact {
-    background-image: url(../assets/img/landing/word_map.png);
+    // background-image: url(../assets/img/landing/word_map.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
     margin-top: 60px;
@@ -2728,11 +2731,11 @@ body {
         border-radius: 4px;
       }
     }
-    .carousel-caption p {
-      margin-bottom: 20px;
-      font-size: 14px;
-      line-height: 1.4;
-    }
+    // .carousel-caption p {
+    //   margin-bottom: 20px;
+    //   font-size: 14px;
+    //   line-height: 1.4;
+    // }
   }
 }
 
@@ -2744,17 +2747,17 @@ body {
 
 @media (max-width: 768px) {
   .landing-page {
-    .carousel-caption {
-      left: 5%;
-      top: 80px;
-      &.blank {
-        left: 5%;
-        top: 80px;
-      }
-      h1 {
-        font-size: 28px;
-      }
-    }
+    // .carousel-caption {
+    //   left: 5%;
+    //   top: 80px;
+    //   &.blank {
+    //     left: 5%;
+    //     top: 80px;
+    //   }
+    //   h1 {
+    //     font-size: 28px;
+    //   }
+    // }
     .navbar.navbar-scroll .navbar-brand {
       margin-top: 6px;
     }

@@ -2,6 +2,34 @@
 # if you don't have language feature(language.yml is empty), ignore "i18n" items
 
 - name:
+    detail: Google Brain
+    i18n: Google Brain
+  desc:
+    detail: Working with Atil Iscen and the rest of the Google Brain Locomotion team to teach legged robots how to walk. Publications coming soon!
+    i18n: Working with Atil Iscen and the rest of the Google Brain Locomotion team to teach legged robots how to walk. Publications coming soon!
+  date:
+    detail: May 2020
+    i18n: May 2020
+  job:
+    detail: Research/Software Engineering Intern
+    i18n: Research/Software Engineering Intern
+  icon: fa-google
+
+- name:
+    detail: Borglab
+    i18n: Borglab
+  desc:
+    detail: Performing research on trajectory optimization techniques for legged robots under the supervision of Frank Dellaert.
+    i18n: Performing research on trajectory optimization techniques for legged robots under the supervision of Frank Dellaert.
+  date:
+    detail: Aug 2019
+    i18n: Aug 2019
+  job:
+    detail: Undergraduate researcher
+    i18n: Undersgraduate researcher
+  icon: fa-flask
+
+- name:
     detail: Google
     i18n: Google
   desc:
@@ -39,8 +67,8 @@
     detail: May 2018
     i18n: May 2018
   job:
-    detail: Software Engineer
-    i18n: Software Engineer
+    detail: Software Engineering Intern
+    i18n: Software Engineering Intern
   icon: fa-fighter-jet
 
 # - name:

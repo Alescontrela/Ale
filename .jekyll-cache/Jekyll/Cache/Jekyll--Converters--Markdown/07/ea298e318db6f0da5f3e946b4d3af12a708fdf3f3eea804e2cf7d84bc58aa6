@@ -1,8 +1,8 @@
-I"ÏG<p>The n-queens problem involves finding all possible ways to place n non-attacking queens on an <code class="highlighter-rouge">nxn</code> board. Non-attacking implies that <strong>no two queens can be on the same row, column, or diagonal, and therefore have no way of attacking one another</strong>. One possible solution to the n-queens problem, where n=4, can be displayed as follow:</p>
+I"‹G<p>The n-queens problem involves finding all possible ways to place n non-attacking queens on an <code class="language-plaintext highlighter-rouge">nxn</code> board. Non-attacking implies that <strong>no two queens can be on the same row, column, or diagonal, and therefore have no way of attacking one another</strong>. One possible solution to the n-queens problem, where n=4, can be displayed as follow:</p>
 
-<p><img src="/Ale/static/assets/img/blog/n_queens/n_queens.png" style="display: block; margin-left: auto; margin-right: auto; width: 15%;" /></p>
+<p><img src="/static/assets/img/blog/n_queens/n_queens.png" style="display: block; margin-left: auto; margin-right: auto; width: 15%;" /></p>
 
-<p>Most readily-available solutions involve using a direct representation of the chess board, such as an <code class="highlighter-rouge">nxn</code> array, to dictate the placement of queens on the board. Although this approach works, it is not efficient. Instead, a more practical approach is to represent the <em>state</em> of the rows, columns, and diagonals using dictionaries. Using this method, we directly observe whether a specific row, column, or diagonal is under attack.</p>
+<p>Most readily-available solutions involve using a direct representation of the chess board, such as an <code class="language-plaintext highlighter-rouge">nxn</code> array, to dictate the placement of queens on the board. Although this approach works, it is not efficient. Instead, a more practical approach is to represent the <em>state</em> of the rows, columns, and diagonals using dictionaries. Using this method, we directly observe whether a specific row, column, or diagonal is under attack.</p>
 
 <p><a href="https://github.com/Alescontrela/nqueens">GitHub repository for this post</a></p>
 
@@ -48,14 +48,14 @@
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">add_solution</span><span class="p">(</span><span class="n">board</span><span class="p">):</span> <span class="c1"># save a solution
 </span>    <span class="k">global</span> <span class="n">solutions</span>
-    <span class="n">saved_board</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
-    <span class="n">solutions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">saved_board</span><span class="p">)</span>
+    <span class="n">saved_board</span> <span class="o">=</span> <span class="n">copy</span><span class="p">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+    <span class="n">solutions</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">saved_board</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>Finally, the main function is created to find all possible solutions using backtracking:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">placequeen</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">board</span><span class="p">):</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">board</span><span class="p">[</span><span class="s">'queen'</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="c1"># number of columns
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">board</span><span class="p">[</span><span class="s">'queen'</span><span class="p">].</span><span class="n">keys</span><span class="p">())</span> <span class="c1"># number of columns
 </span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="c1"># loop over all columns in the row
 </span>        <span class="k">if</span> <span class="n">is_free</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">board</span><span class="p">):</span>
@@ -72,13 +72,13 @@
 <p>Some additional helper methods are also used to take input from the keyboard at the start of the program as well as print all possible solutions once the backtracking algorithm has run its course:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">printsolutions</span><span class="p">(</span><span class="n">solutions</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span> <span class="c1"># print the solutions
-</span>    <span class="k">print</span><span class="p">(</span><span class="s">"{} solutions total"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">solutions</span><span class="p">)))</span>
+</span>    <span class="k">print</span><span class="p">(</span><span class="s">"{} solutions total"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">solutions</span><span class="p">)))</span>
     <span class="k">for</span> <span class="n">sol</span> <span class="ow">in</span> <span class="n">solutions</span><span class="p">:</span>
         <span class="n">arr</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">)]</span>
-        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="s">'queen'</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="s">'queen'</span><span class="p">].</span><span class="n">keys</span><span class="p">()):</span>
             <span class="n">arr</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">sol</span><span class="p">[</span><span class="s">'queen'</span><span class="p">][</span><span class="n">row</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
 
-        <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">'{}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">(</span><span class="n">arr</span><span class="p">)))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">'{}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">(</span><span class="n">arr</span><span class="p">)))</span>
         <span class="k">print</span><span class="p">(</span><span class="s">"---"</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">take_input</span><span class="p">():</span> <span class="c1"># take user input
@@ -111,7 +111,7 @@
 
 <p>This implementation of backtracking runs quite rapidly for board sizes &lt;= 10 on my macbook. Be aware that as the size of the board increases, the total amount of possible solutions increases drastically, which results in a longer runtime. The following curve shows just how rapid this growth is:</p>
 
-<p><img src="/Ale/static/assets/img/blog/n_queens/board-size_vs_num-solutions.png" style="display: block; margin-left: auto; margin-right: auto; width: 50%;" /></p>
+<p><img src="/static/assets/img/blog/n_queens/board-size_vs_num-solutions.png" style="display: block; margin-left: auto; margin-right: auto; width: 50%;" /></p>
 
 <p>I hope this post helped guide your intuition behind the n-queens problem, feel free to post your thoughts in the Disqus comments section below.</p>
 :ET
