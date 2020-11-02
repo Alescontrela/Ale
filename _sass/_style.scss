@@ -1170,6 +1170,32 @@ label.error {
   }
 }
 
+.carousel-indicators li.active
+{
+	background-color:#3385FF;/* changes indicators color when it is active*/ 
+}
+
+// .carousel .carousel-indicators	/* indicator wrapper*/
+// {
+//   // position: absolute;
+//   // text-align: center;
+// 	// bottom: 0;
+// 	// width: 50%;
+//   // margin: 0;
+//   left: 67.5%;
+//  	// right: 0;
+//   // border-radius: 2px;	
+//  	display: flex;	/* this is for indicators  */
+// }
+
+.carousel-indicators li
+{
+  background-color:#676a6c;/* changes indicators color when it is active*/ 
+  // height: 40px;
+  
+  // flex-grow: 0.1;  /* make all indicator li similarly stretched */
+}
+
 @media only screen and (min-width: 1170px) {
   .center-orientation {
     .vertical-timeline-content {
@@ -2412,7 +2438,7 @@ body {
     border-color: transparent;
     transition: all .3s ease-in-out 0s;
     .nav li a {
-      color: #fff;
+      color: #676a6c;
       font-family: 'Open Sans', helvetica, arial, sans-serif;
       font-weight: 700;
       letter-spacing: 1px;
@@ -2505,7 +2531,7 @@ body {
     height: auto;
   }
   .header-back {
-    height: 470px;
+    height: 530px;
     width: 100%;
     background-position: 50% 0;
     background-repeat:  no-repeat;

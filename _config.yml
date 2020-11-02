@@ -14,6 +14,8 @@ author:  # change following line to your infomation.
   name: Alejandro Escontrela  # Be used at blog posts' author.
   first_name: Alejandro  # Be used at index page about me section.
   last_name: Escontrela  # Be used at index page about me section.
+  job: Researcher @ {Google Brain, Borglab (GT)} # Used in about me section.
+  job2: Full-time undergraduate student studying Aerospace Engineering @ Georgia Tech
   avatar: /static/assets/img/landing/avatar.jpg  # upload your avatar at directory and edit it.
   github_username: Alescontrela  # Leave blank if you don't have now
   linkedin_id: alejandro-escontrela # Leave blank if you don't have now
@@ -52,7 +54,7 @@ gio:  # if you wanna this feature, go to https://www.growingio.com/ to get your 
 donation: off  # type 'on'/'off' to choice display donation button at post page or not
 
 ## carousels
-index_carousel:  # index page carousel switch
+index_carousel:  2 # index page carousel switch
 blog_carousel:   # blog page carousel switch
 
 # scss
