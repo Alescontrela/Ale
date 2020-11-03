@@ -18,7 +18,7 @@
             class="header-back"
             style="background-image: url({{ '/static/assets/img/' | prepend: site.baseurl }}{{ site.data.index.banners[0].src }});"
             title="{{ site.data.index.banners[0].title }}">
-                <video src="{{ site.baseurl }}/static/assets/img/{{ site.data.index.banners[0].src }}" muted autoplay loop style="width:100%;height:100%;object-fit: fill;"></video>
+                <video src="{{ site.baseurl }}/static/assets/img/{{ site.data.index.banners[0].src }}" muted autoplay playsinline loop style="width:100%;height:100%;object-fit: fill;"></video>
             </div>
             <div class="carousel-caption">
                 <h2 style="color: {{ site.data.index.banners[0].text_color }};">{{ site.data.index.banners[0].title }}</h2>
@@ -36,7 +36,7 @@
             <!-- Set background for slide in css -->
             <div class="header-back" style="background-image: url({{ "/static/assets/img/"  | prepend: site.baseurl }}{{ banner.src }});"
             title="{{ banner.title }}">
-                <video src="{{ site.baseurl }}/static/assets/img/{{ banner.src }}" muted autoplay loop style="width:100%;height:100%;object-fit: fill;"></video>
+                <video src="{{ site.baseurl }}/static/assets/img/{{ banner.src }}" muted autoplay playsinline loop style="width:100%;height:100%;object-fit: fill;"></video>
             </div>
             <div class="carousel-caption">
                 <h2 style="color: {{ banner.text_color }};">{{ banner.title }}</h2>
